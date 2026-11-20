@@ -2,7 +2,8 @@
 
 **Source:** [`source/requirements.md`](source/requirements.md) — "Project Intelligence Platform, Product
 Requirements & Technical Development Specification", status Draft (sign-off: T-001, OQ-001).
-**Version:** 1.0 (2026-11-20, restructured from the source; no requirement added or removed).
+**Version:** 1.1 (2026-11-20). 1.0 restructured the source with no requirement added or removed; 1.1
+adds FR-5.12 and FR-5.13 (D-006).
 
 Conventions:
 
@@ -191,6 +192,10 @@ Exact role names, organization roles and the permission matrix: OQ-007.
 **FR-5.10** The platform shows the traceability chain requirement → design specification → task → branch / pull request → merged implementation → QA result → client acceptance. Design specification link: OQ-031. *(Source: §7.4)*
 
 **FR-5.11** Requirements can be linked to implementation tasks. *(Source: §7.4, §16)*
+
+**FR-5.12** The task board offers a list view and a Kanban view with one column per canonical status; moving a card changes the task's status only where the platform is the authoritative source. *(Source: D-006)*
+
+**FR-5.13** A Gantt view shows tasks as bars from start to due date, grouped by milestone, with milestone markers and dependency links. Bar dates: OQ-035. *(Source: D-006)*
 
 ### FR-6 Role-based interfaces
 

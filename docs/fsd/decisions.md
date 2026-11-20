@@ -10,6 +10,7 @@ commits. Long-form architecture decisions go to `adr/ADR-nnn-<slug>.md`.
 | D-003 | One version for the whole repository, tag `vX.Y.Z` | — | binding |
 | D-004 | Internal product, no external client | — | binding |
 | D-005 | Remote: public GitHub repository `ramadhan-zain/project-intelligence-platform`, default branch `main` | OQ-027 | binding |
+| D-006 | Task views: Kanban view on the task board and a Gantt view of the project schedule | OQ-035 | binding |
 
 ## D-001 — Deployables and stack
 
@@ -48,4 +49,18 @@ commits. Long-form architecture decisions go to `adr/ADR-nnn-<slug>.md`.
 * **Answer:** `https://github.com/ramadhan-zain/project-intelligence-platform`, public, personal account,
   default branch `main` (created on first push). Public visibility means rulesets work on the free plan.
 * **Agreed by:** product owner (created the repository).
+* **Date:** 2026-11-20.
+
+## D-006 — Task views: Kanban and Gantt
+
+* **Question:** Which views does the task UI offer? The source (§7.1, §8.2) lists task features and
+  milestones but names no layout.
+* **Answer:** Two views besides the task list.
+  * **Kanban view** on the task board (T-073): one column per canonical status. Dragging a card changes
+    its status only where the platform is the authoritative source (BR-002, BR-004). Cards for
+    source-owned tasks are locked and show the reason, same as every other source-owned field.
+  * **Gantt view** (T-078): tasks as bars from start to due date, grouped by milestone, with milestone
+    markers and dependency links. Where bar dates come from: OQ-035.
+* **Agreed by:** product owner (session after bootstrap; reference was a task-progress dashboard
+  of another project, see T-077 notes).
 * **Date:** 2026-11-20.
