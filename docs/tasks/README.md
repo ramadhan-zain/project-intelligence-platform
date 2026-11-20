@@ -12,7 +12,7 @@ Requirement → task coverage: [`../fsd/traceability.md`](../fsd/traceability.md
 | Task | Release | Size | Status | Satisfies |
 |---|---|---|---|---|
 | [T-001](backlog/T-001-sign-off-source-requirements.md) sign off source requirements | — | S | open | tooling |
-| [T-002](backlog/T-002-create-github-remote.md) create github remote | — | S | ready | tooling |
+| [T-002](done/T-002-create-github-remote.md) create github remote | — | S | done 2026-11-21 | tooling |
 | [T-003](backlog/T-003-test-github-app-and-sample-payloads.md) test github app and sample payloads | R2 | S | ready | tooling |
 | [T-004](backlog/T-004-confirm-nfr-targets-and-retention.md) confirm nfr targets and retention | — | S | open | NFR-13, NFR-14 |
 | [T-005](backlog/T-005-decide-r4-r5-open-questions.md) decide r4 r5 open questions | R4 | S | open | tooling |
@@ -154,5 +154,5 @@ Requirement → task coverage: [`../fsd/traceability.md`](../fsd/traceability.md
 | [T-112](backlog/T-112-health-endpoint.md) health endpoint | R1 | S | ready | infra |
 | [T-113](backlog/T-113-deployment-runbook-verified.md) deployment runbook verified | R1 | M | blocked (by T-111, T-114) | infra |
 | [T-114](backlog/T-114-backup-and-restore.md) backup and restore | R1 | M | blocked (by T-111) | NFR-13 |
-| [T-115](backlog/T-115-release-pipeline.md) release pipeline | R1 | S | blocked (by T-110, T-002) | infra |
+| [T-115](backlog/T-115-release-pipeline.md) release pipeline | R1 | S | blocked (by T-110) | infra |
 | [T-116](backlog/T-116-repository-documentation.md) repository documentation | R1 | S | ready | NFR-16 |
