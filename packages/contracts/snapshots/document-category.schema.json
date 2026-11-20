@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "string",
+  "enum": [
+    "overview",
+    "architecture",
+    "requirements",
+    "specification",
+    "agent_instructions",
+    "technical_decision",
+    "development_notes",
+    "deployment",
+    "testing",
+    "release_notes",
+    "custom"
+  ]
+}

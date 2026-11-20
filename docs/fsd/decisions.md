@@ -1,0 +1,51 @@
+# Decisions
+
+A decision is binding; changing one is a contract change. Cite D-numbers from code comments, tasks and
+commits. Long-form architecture decisions go to `adr/ADR-nnn-<slug>.md`.
+
+| # | Decision | OQ | State |
+|---|---|---|---|
+| D-001 | Deployables and stack: pnpm TypeScript monorepo with web, api, worker, mcp, contracts | — | binding |
+| D-002 | Production runtime: Docker Compose on a single host | — | binding |
+| D-003 | One version for the whole repository, tag `vX.Y.Z` | — | binding |
+| D-004 | Internal product, no external client | — | binding |
+| D-005 | Remote: public GitHub repository `ramadhan-zain/project-intelligence-platform`, default branch `main` | OQ-027 | binding |
+
+## D-001 — Deployables and stack
+
+* **Question:** Which deployables and stack? Source §3.2 recommends Next.js, Fastify, PostgreSQL, Redis + BullMQ, SSE, MCP, Docker.
+* **Answer:** Accept the recommendation. One pnpm workspace in TypeScript: `apps/web` (Next.js), `apps/api`
+  (Fastify: REST, SSE, webhook intake), `apps/worker` (BullMQ), `apps/mcp` (MCP server),
+  `packages/contracts` (shared zod schemas, enums, constants, typed client), `packages/db` (schema, migrations).
+* **Agreed by:** product owner (bootstrap interview).
+* **Date:** 2026-11-20.
+
+## D-002 — Production runtime
+
+* **Question:** Where does production run?
+* **Answer:** Docker Compose on one host. Dev compose and prod stack run the same services and images.
+* **Agreed by:** product owner (bootstrap interview).
+* **Date:** 2026-11-20.
+
+## D-003 — Release model
+
+* **Question:** One version or per package?
+* **Answer:** One version for the whole repository, git tag `vX.Y.Z`. Adapter versions (FR-3.18) are a
+  field of the adapter contract, not separate package releases.
+* **Agreed by:** product owner (bootstrap interview).
+* **Date:** 2026-11-20.
+
+## D-004 — Ownership
+
+* **Question:** Who is the product for?
+* **Answer:** Internal product of the repository owner's organization. "Client" in the spec is a user role.
+* **Agreed by:** product owner (bootstrap interview).
+* **Date:** 2026-11-20.
+
+## D-005 — Git remote
+
+* **Question:** Where does the code live (OQ-027)?
+* **Answer:** `https://github.com/ramadhan-zain/project-intelligence-platform`, public, personal account,
+  default branch `main` (created on first push). Public visibility means rulesets work on the free plan.
+* **Agreed by:** product owner (created the repository).
+* **Date:** 2026-11-20.

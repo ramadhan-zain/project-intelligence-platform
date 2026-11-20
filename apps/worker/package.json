@@ -1,0 +1,22 @@
+{
+  "name": "@pip/worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "scripts": {
+    "dev": "node --conditions=source --import tsx --watch src/index.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/index.js",
+    "typecheck": "tsc -p tsconfig.build.json --noEmit"
+  },
+  "dependencies": {
+    "@pip/contracts": "workspace:*",
+    "@pip/db": "workspace:*",
+    "bullmq": "6.7.8",
+    "ioredis": "6.0.0"
+  }
+}

@@ -1,0 +1,80 @@
+# Development stack (D-002): same services, images and commands as infra/prod/stack.yml.
+# Guarded by tests/unit/guards/stack-parity.test.ts. Start with `make dev-up`.
+name: pip-dev
+
+x-app-env: &app-env
+  DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+  REDIS_URL: redis://redis:6379
+  RELEASE_VERSION: ${PIP_VERSION:-0.0.0-dev}
+
+services:
+  postgres:
+    image: postgres:17.6-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes: [pgdata:/var/lib/postgresql/data]
+    ports: ["127.0.0.1:${PIP_PG_PORT:-15432}:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      retries: 10
+
+  redis:
+    image: redis:7.4-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: [redisdata:/data]
+    ports: ["127.0.0.1:${PIP_REDIS_PORT:-16379}:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      retries: 10
+
+  api:
+    build: { context: .., dockerfile: apps/api/Dockerfile }
+    env_file: .env
+    environment: *app-env
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+
+  worker:
+    build: { context: .., dockerfile: apps/worker/Dockerfile }
+    env_file: .env
+    environment: *app-env
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+
+  mcp:
+    build: { context: .., dockerfile: apps/mcp/Dockerfile }
+    env_file: .env
+    environment: *app-env
+    depends_on:
+      api: { condition: service_healthy }
+
+  web:
+    build: { context: .., dockerfile: apps/web/Dockerfile }
+    environment:
+      RELEASE_VERSION: ${PIP_VERSION:-0.0.0-dev}
+    depends_on:
+      api: { condition: service_healthy }
+
+  caddy:
+    image: caddy:2.10-alpine
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-:80}
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddydata:/data
+    ports: ["127.0.0.1:${PIP_HTTP_PORT:-8088}:80"]
+    depends_on:
+      web: { condition: service_healthy }
+      api: { condition: service_healthy }
+      mcp: { condition: service_healthy }
+
+volumes:
+  pgdata:
+  redisdata:
+  caddydata:

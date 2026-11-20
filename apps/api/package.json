@@ -1,0 +1,28 @@
+{
+  "name": "@pip/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "scripts": {
+    "dev": "node --conditions=source --import tsx --watch src/index.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/index.js",
+    "typecheck": "tsc -p tsconfig.build.json --noEmit"
+  },
+  "dependencies": {
+    "@pip/contracts": "workspace:*",
+    "@pip/db": "workspace:*",
+    "fastify": "5.12.8",
+    "ioredis": "6.0.0"
+  },
+  "exports": {
+    "./server": {
+      "source": "./src/server.ts",
+      "default": "./dist/server.js"
+    }
+  }
+}

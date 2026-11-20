@@ -1,0 +1,91 @@
+# Production stack: Docker Compose on one host (D-002). Images pinned to PIP_VERSION, never `latest`.
+# Run from infra/prod with infra/prod/.env present: docker compose -f stack.yml up -d --wait
+name: pip
+
+x-app-env: &app-env
+  DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+  REDIS_URL: redis://redis:6379
+  RELEASE_VERSION: ${PIP_VERSION:?set PIP_VERSION}
+
+x-restart: &restart
+  restart: unless-stopped
+  logging:
+    driver: json-file
+    options: { max-size: "20m", max-file: "5" }
+
+services:
+  postgres:
+    <<: *restart
+    image: postgres:17.6-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes: [pgdata:/var/lib/postgresql/data, ../backup:/backup]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      retries: 10
+
+  redis:
+    <<: *restart
+    image: redis:7.4-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: [redisdata:/data]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      retries: 10
+
+  api:
+    <<: *restart
+    image: ${PIP_IMAGE_REGISTRY:?set PIP_IMAGE_REGISTRY}/pip-api:${PIP_VERSION}
+    env_file: .env
+    environment: *app-env
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+
+  worker:
+    <<: *restart
+    image: ${PIP_IMAGE_REGISTRY}/pip-worker:${PIP_VERSION}
+    env_file: .env
+    environment: *app-env
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+
+  mcp:
+    <<: *restart
+    image: ${PIP_IMAGE_REGISTRY}/pip-mcp:${PIP_VERSION}
+    env_file: .env
+    environment: *app-env
+    depends_on:
+      api: { condition: service_healthy }
+
+  web:
+    <<: *restart
+    image: ${PIP_IMAGE_REGISTRY}/pip-web:${PIP_VERSION}
+    environment:
+      RELEASE_VERSION: ${PIP_VERSION}
+    depends_on:
+      api: { condition: service_healthy }
+
+  caddy:
+    <<: *restart
+    image: caddy:2.10-alpine
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:?set SITE_ADDRESS to the public domain}
+    volumes:
+      - ../caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddydata:/data
+    ports: ["80:80", "443:443"]
+    depends_on:
+      web: { condition: service_healthy }
+      api: { condition: service_healthy }
+      mcp: { condition: service_healthy }
+
+volumes:
+  pgdata:
+  redisdata:
+  caddydata:

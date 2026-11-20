@@ -1,0 +1,24 @@
+# dependencies and build output
+node_modules/
+.pnpm-store/
+dist/
+build/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+.turbo/
+
+# env and secrets
+.env
+.env.*
+!.env.example
+infra/.env
+*.pem
+
+# local tooling
+.claude/settings.local.json
+graphify-out/
+.DS_Store
+*.log
+tests/load/reports/*.html

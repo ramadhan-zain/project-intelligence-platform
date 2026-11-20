@@ -1,0 +1,59 @@
+# CI (Gate 6, bootstrap). Required checks for the default-branch ruleset: `check`, `integration`.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # check — lint, types, traceability, unit + contract tests with the coverage gate (bootstrap; gate owned by T-100).
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22.21.1
+          cache: pnpm
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+      - run: pnpm install --frozen-lockfile
+      - name: Lint (biome + dependency rules)
+        run: pnpm lint
+      - name: Types
+        run: pnpm typecheck
+      - name: Traceability
+        run: python3 tools/trace.py
+      - name: Unit + contract tests (coverage gate 80 %)
+        run: pnpm test
+
+  # integration — real PostgreSQL and Redis from infra/docker-compose.test.yml (bootstrap).
+  integration:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22.21.1
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Start test dependencies
+        run: docker compose -f infra/docker-compose.test.yml up -d --wait
+      - name: Integration tests
+        run: pnpm test:integration
+      - name: Stop test dependencies
+        if: always()
+        run: docker compose -f infra/docker-compose.test.yml down -v

@@ -1,0 +1,9 @@
+{
+  "name": "@pip/github-mock",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "send": "node --import tsx src/send.ts"
+  }
+}

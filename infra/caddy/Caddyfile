@@ -1,0 +1,21 @@
+# Reverse proxy (OQ-024). SITE_ADDRESS: ":80" in dev, the public domain in production (automatic TLS).
+{$SITE_ADDRESS::80} {
+	encode zstd gzip
+
+	handle /api/* {
+		reverse_proxy api:3001 {
+			flush_interval -1
+		}
+	}
+	handle /health {
+		reverse_proxy api:3001
+	}
+	handle /mcp* {
+		reverse_proxy mcp:3002 {
+			flush_interval -1
+		}
+	}
+	handle {
+		reverse_proxy web:3000
+	}
+}

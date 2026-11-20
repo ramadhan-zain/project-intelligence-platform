@@ -1,0 +1,12 @@
+**/node_modules
+**/dist
+**/.next
+**/coverage
+.git
+graphify-out
+docs
+tests
+infra/.env
+.env
+.env.*
+*.log

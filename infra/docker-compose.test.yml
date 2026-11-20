@@ -1,0 +1,25 @@
+# Integration-test dependencies. Non-default host ports so they never collide with the dev stack.
+# Fixed throwaway credentials: test-only, not secrets.
+name: pip-test
+
+services:
+  postgres:
+    image: postgres:17.6-alpine
+    environment:
+      POSTGRES_USER: pip_test
+      POSTGRES_PASSWORD: pip_test
+      POSTGRES_DB: pip_test
+    ports: ["127.0.0.1:55432:5432"]
+    tmpfs: [/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pip_test -d pip_test"]
+      interval: 2s
+      retries: 20
+
+  redis:
+    image: redis:7.4-alpine
+    ports: ["127.0.0.1:56379:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      retries: 20
