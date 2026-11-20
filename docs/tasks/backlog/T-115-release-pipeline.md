@@ -1,6 +1,6 @@
 # T-115 — Release pipeline
 
-**Phase:** 10 — Deployment · **Release:** R1 · **Status:** blocked (by T-110, T-002) · **Size:** S
+**Phase:** 10 — Deployment · **Release:** R1 · **Status:** blocked (by T-110) · **Size:** S
 **Satisfies:** infra · **Depends on:** T-110, T-002 · **Gated by:** —
 **Files:** `.github/workflows/release.yml`, `tools/bump-version.mjs`
 
