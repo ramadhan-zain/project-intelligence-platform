@@ -6,15 +6,17 @@
 
 ## Goal
 
-Platform-native tasks can be created and updated (assignment, status, priority, labels, due date, dependencies, comments) with history; edits to fields owned by an external source are refused with a clear reason.
+Platform-native tasks can be created and updated (assignment, status, priority, labels, start and due date, dependencies, comments) with history; edits to fields owned by an external source are refused with a clear reason.
 
 ## Acceptance
 
 - [ ] `PATCH` of `status` on a Markdown-sourced task → 409 `source_owned`
 - [ ] History endpoint returns version rows
 - [ ] Dependency cycles refused
+- [ ] `start_date` editable on platform-native tasks; `start_date` after `due_date` refused (OQ-035)
 - [ ] Tests: `tests/integration/api/tasks.test.ts`
 
 ## Notes
 
 - 2026-11-20: created by bootstrap.
+- 2026-11-20: `start_date` added for the Gantt view (D-006, OQ-035).

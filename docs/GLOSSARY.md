@@ -29,6 +29,7 @@ One meaning per term. Code, UI labels and docs use the spelling in the **Term** 
 | Document category | Value of a document's `type`: `overview`, `architecture`, …, `custom` | §4.7 | document format (markdown, json) |
 | Envelope | Standard JSON wrapper of every integration event: id, type, schema version, scope, source, entity, time, payload | §11.1 | payload |
 | Full resynchronization | Re-reading every source of one repository and reconciling | §17.2 | initial synchronization |
+| Gantt view | Project schedule: tasks as bars from start to due date, grouped by milestone, with dependency links (D-006, OQ-035) | D-006 | activity timeline |
 | GitHub App | GitHub's installable app model used for webhooks and API access | §3.2 | GitHub OAuth (user login) |
 | Hybrid mode | Integration mode: push events for increments plus scheduled pulls for consistency; default | §4.5 | — |
 | Implementation summary | Structured report an agent publishes about work done on a task | §10.1 | AI-generated summary |
@@ -36,6 +37,7 @@ One meaning per term. Code, UI labels and docs use the spelling in the **Term** 
 | Initial synchronization | First full read after a repository is connected | §15 Phase 2 | full resynchronization |
 | Integration | Stored connection of one repository to the platform: adapter type, version, config, mode, status | §5.1 | adapter |
 | Integration token | Secret credential scoped to one integration, used by push adapters (OQ-021) | §12.3 | API token |
+| Kanban view | Task board layout with one column per canonical status; drag-to-move only for platform-owned status (D-006) | D-006 | task list view |
 | Management | User role with organization-wide, cross-project read access | §8.6 | project manager |
 | MCP | Model Context Protocol; the platform exposes tools to AI agents through an MCP server | §10.1 | REST API |
 | Milestone | Named project target with a date that tasks and requirements belong to (OQ-008) | §8.2 | release |

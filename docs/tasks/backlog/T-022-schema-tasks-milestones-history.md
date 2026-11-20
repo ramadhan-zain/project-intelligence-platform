@@ -10,7 +10,7 @@ Tasks (with type, labels, original status, source reference), task versions, com
 
 ## Acceptance
 
-- [ ] Columns cover FR-2.2 plus `original_status`, `type`, `labels`, `milestone_id`, `source_*`
+- [ ] Columns cover FR-2.2 plus `original_status`, `type`, `labels`, `milestone_id`, `source_*`, nullable `start_date` (OQ-035)
 - [ ] Update helper writes `task_versions` atomically
 - [ ] Unique `(project_id, source, external_id)` prevents duplicates
 - [ ] Tests: `tests/integration/db/tasks.test.ts`
@@ -18,3 +18,4 @@ Tasks (with type, labels, original status, source reference), task versions, com
 ## Notes
 
 - 2026-11-20: created by bootstrap.
+- 2026-11-20: `start_date` added for the Gantt view (D-006, OQ-035).

@@ -120,11 +120,12 @@ Requirement → task coverage: [`../fsd/traceability.md`](../fsd/traceability.md
 | [T-070](backlog/T-070-web-shell-auth-layout-sse.md) web shell auth layout sse | R1 | M | blocked (by T-030, T-038, T-012) | FR-9.13 |
 | [T-071](backlog/T-071-organization-admin-screens.md) organization admin screens | R1 | S | blocked (by T-070, T-031) | FR-1.1, FR-1.2 |
 | [T-072](backlog/T-072-project-and-repository-screens.md) project and repository screens | R1 | M | blocked (by T-070, T-033, T-054) | FR-1.3, FR-1.6, FR-3.19 |
-| [T-073](backlog/T-073-task-board-and-detail.md) task board and detail | R1 | L | blocked (by T-070, T-034, T-043) | FR-5.2, FR-4.7, AC-9, AC-10, AC-20 |
+| [T-073](backlog/T-073-task-board-and-detail.md) task board and detail | R1 | L | blocked (by T-070, T-034, T-043) | FR-5.2, FR-5.12, FR-4.7, AC-9, AC-10, AC-20 |
 | [T-074](backlog/T-074-document-viewer-editor.md) document viewer editor | R1 | M | blocked (by T-070, T-035) | FR-11.2, FR-11.5, BR-013 |
 | [T-075](backlog/T-075-activity-timeline-screen.md) activity timeline screen | R1 | S | blocked (by T-070, T-036) | FR-1.8 |
 | [T-076](backlog/T-076-developer-view.md) developer view | R3 | M | blocked (by T-073, T-060) | FR-6.1 |
 | [T-077](backlog/T-077-pm-view-progress.md) pm view progress | R1 | M | blocked (by T-073, T-018) | FR-6.2, FR-6.7, AC-13 |
+| [T-078](backlog/T-078-gantt-view.md) gantt view | R1 | M | blocked (by T-073, T-034) | FR-5.13 |
 | [T-083](backlog/T-083-designer-interface.md) designer interface | R4 | L | blocked (by T-080, T-026) | FR-6.3, AC-21 |
 | [T-084](backlog/T-084-qa-interface-and-results.md) qa interface and results | R4 | L | blocked (by T-080, T-026) | FR-6.4, FR-2.8, AC-22 |
 | [T-085](backlog/T-085-traceability-chain-view.md) traceability chain view | R4 | L | blocked (by T-080, T-084, T-044) | FR-5.10 |
