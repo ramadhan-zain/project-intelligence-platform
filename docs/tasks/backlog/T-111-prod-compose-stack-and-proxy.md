@@ -18,3 +18,4 @@ The production stack (Caddy, web, api, worker, mcp, PostgreSQL, Redis) runs on o
 
 - 2026-11-20: created by bootstrap.
 - 2026-11-20: bootstrap delivered `infra/prod/stack.yml`, Caddyfile and the stack-parity guard; remaining: clean-VM run.
+- 2026-11-21: T-020 moved apps to the non-owner role `pip_app` (`DATABASE_URL` uses `APP_DB_PASSWORD`). The prod stack needs a one-shot `migrate` service (`pnpm db:migrate` with `DATABASE_MIGRATION_URL` = owner) that the apps depend on (`service_completed_successfully`); the image must ship `packages/db/migrations`; `APP_DB_PASSWORD` in `infra/prod/.env`.

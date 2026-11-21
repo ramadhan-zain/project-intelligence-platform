@@ -18,3 +18,4 @@ Tables for organizations, users, organization members, projects, project members
 ## Notes
 
 - 2026-11-20: created by bootstrap.
+- 2026-11-21: T-020 left `make db-schema` as a stub; implement it here (first tables). Policy pattern: header of `packages/db/migrations/0000_tenant_context.sql`.
