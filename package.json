@@ -14,7 +14,9 @@
     "typecheck": "pnpm -r run typecheck",
     "test": "vitest run --coverage",
     "test:integration": "vitest run --config vitest.integration.config.ts",
-    "schemas": "node --conditions=source --import tsx packages/contracts/scripts/export-schemas.ts"
+    "schemas": "node --conditions=source --import tsx packages/contracts/scripts/export-schemas.ts",
+    "dev": "pnpm -r --parallel --filter './apps/*' run dev",
+    "db:migrate": "node --conditions=source --import tsx packages/db/scripts/migrate.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.8",
@@ -24,7 +26,9 @@
     "@types/node": "26.6.6",
     "@vitest/coverage-v8": "5.1.1",
     "dependency-cruiser": "18.8.0",
+    "drizzle-orm": "0.45.4",
     "ioredis": "6.0.0",
+    "postgres": "4.1.1",
     "tsx": "4.23.15",
     "typescript": "6.0.3",
     "vitest": "5.1.1",
