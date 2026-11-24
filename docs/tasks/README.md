@@ -42,19 +42,19 @@ Requirement → task coverage: [`../fsd/traceability.md`](../fsd/traceability.md
 | Task | Release | Size | Status | Satisfies |
 |---|---|---|---|---|
 | [T-020](done/T-020-db-foundation-tenant-context-rls.md) db foundation tenant context rls | R1 | M | done 2026-11-21 — D-007 | NFR-2, NFR-6 |
-| [T-021](backlog/T-021-schema-tenancy-projects-repositories.md) schema tenancy projects repositories | R1 | M | blocked (by T-020) | FR-10.1, FR-2.10 |
-| [T-022](backlog/T-022-schema-tasks-milestones-history.md) schema tasks milestones history | R1 | M | blocked (by T-021) | FR-2.2, FR-2.11, FR-2.14, FR-5.5 |
-| [T-023](backlog/T-023-schema-documents-decisions.md) schema documents decisions | R1 | M | blocked (by T-021) | FR-2.4, FR-2.5, FR-11.4 |
-| [T-024](backlog/T-024-schema-events-sync-audit.md) schema events sync audit | R1 | M | blocked (by T-021) | FR-2.6, FR-9.7, FR-9.9, FR-10.5 |
-| [T-025](backlog/T-025-schema-git-activity.md) schema git activity | R2 | M | blocked (by T-021) | FR-2.7, FR-2.12, FR-2.13, FR-4.8 |
-| [T-026](backlog/T-026-schema-requirements-qa-approvals-shares.md) schema requirements qa approvals shares | R1 | M | blocked (by T-021) | FR-2.3, FR-2.8, FR-2.9, FR-2.11 |
-| [T-027](backlog/T-027-secrets-encryption-and-token-hashing.md) secrets encryption and token hashing | R1 | M | blocked (by T-020) | NFR-7, NFR-8, AC-29 |
+| [T-021](done/T-021-schema-tenancy-projects-repositories.md) schema tenancy projects repositories | R1 | M | done 2026-11-24 | FR-10.1, FR-2.10 |
+| [T-022](backlog/T-022-schema-tasks-milestones-history.md) schema tasks milestones history | R1 | M | ready | FR-2.2, FR-2.11, FR-2.14, FR-5.5 |
+| [T-023](backlog/T-023-schema-documents-decisions.md) schema documents decisions | R1 | M | ready | FR-2.4, FR-2.5, FR-11.4 |
+| [T-024](backlog/T-024-schema-events-sync-audit.md) schema events sync audit | R1 | M | ready | FR-2.6, FR-9.7, FR-9.9, FR-10.5 |
+| [T-025](backlog/T-025-schema-git-activity.md) schema git activity | R2 | M | ready | FR-2.7, FR-2.12, FR-2.13, FR-4.8 |
+| [T-026](backlog/T-026-schema-requirements-qa-approvals-shares.md) schema requirements qa approvals shares | R1 | M | ready | FR-2.3, FR-2.8, FR-2.9, FR-2.11 |
+| [T-027](backlog/T-027-secrets-encryption-and-token-hashing.md) secrets encryption and token hashing | R1 | M | ready | NFR-7, NFR-8, AC-29 |
 
 ## Phase 4 — Services / API
 
 | Task | Release | Size | Status | Satisfies |
 |---|---|---|---|---|
-| [T-030](backlog/T-030-authentication-and-invitations.md) authentication and invitations | R1 | M | blocked (by T-021) | FR-1.2 |
+| [T-030](backlog/T-030-authentication-and-invitations.md) authentication and invitations | R1 | M | ready | FR-1.2 |
 | [T-031](backlog/T-031-organizations-and-members-api.md) organizations and members api | R1 | S | blocked (by T-030) | FR-1.1, FR-1.2 |
 | [T-032](backlog/T-032-projects-and-project-members-api.md) projects and project members api | R1 | M | blocked (by T-030, T-017) | FR-1.3, FR-1.4, FR-1.5 |
 | [T-033](backlog/T-033-repository-registration-api.md) repository registration api | R1 | S | blocked (by T-032) | FR-1.6, FR-1.7 |

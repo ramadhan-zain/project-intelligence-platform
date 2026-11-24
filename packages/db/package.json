@@ -19,6 +19,7 @@
     "typecheck": "tsc -p tsconfig.build.json --noEmit"
   },
   "dependencies": {
+    "@pip/contracts": "workspace:*",
     "drizzle-orm": "0.45.4",
     "postgres": "4.1.1"
   },

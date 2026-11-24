@@ -1,6 +1,6 @@
 # T-025 — Schema git activity
 
-**Phase:** 3 — Persistence · **Release:** R2 · **Status:** blocked (by T-021) · **Size:** M
+**Phase:** 3 — Persistence · **Release:** R2 · **Status:** ready · **Size:** M
 **Satisfies:** FR-2.7, FR-2.12, FR-2.13, FR-4.8 · **Depends on:** T-021 · **Gated by:** —
 **Files:** `packages/db/src/schema/git.ts`
 

@@ -1,6 +1,6 @@
 # T-023 — Schema documents decisions
 
-**Phase:** 3 — Persistence · **Release:** R1 · **Status:** blocked (by T-021) · **Size:** M
+**Phase:** 3 — Persistence · **Release:** R1 · **Status:** ready · **Size:** M
 **Satisfies:** FR-2.4, FR-2.5, FR-11.4 · **Depends on:** T-021 · **Gated by:** —
 **Files:** `packages/db/src/schema/documents.ts`
 

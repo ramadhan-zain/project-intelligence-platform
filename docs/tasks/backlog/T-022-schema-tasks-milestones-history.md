@@ -1,6 +1,6 @@
 # T-022 — Schema tasks milestones history
 
-**Phase:** 3 — Persistence · **Release:** R1 · **Status:** blocked (by T-021) · **Size:** M
+**Phase:** 3 — Persistence · **Release:** R1 · **Status:** ready · **Size:** M
 **Satisfies:** FR-2.2, FR-2.11, FR-2.14, FR-5.5 · **Depends on:** T-021 · **Gated by:** —
 **Files:** `packages/db/src/schema/tasks.ts`
 

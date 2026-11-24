@@ -1,6 +1,6 @@
 # T-026 — Schema requirements qa approvals shares
 
-**Phase:** 3 — Persistence · **Release:** R1 · **Status:** blocked (by T-021) · **Size:** M
+**Phase:** 3 — Persistence · **Release:** R1 · **Status:** ready · **Size:** M
 **Satisfies:** FR-2.3, FR-2.8, FR-2.9, FR-2.11 · **Depends on:** T-021 · **Gated by:** —
 **Files:** `packages/db/src/schema/collaboration.ts`
 
