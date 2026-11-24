@@ -1,9 +1,10 @@
 # PIP — Developer Requirements Specification
 
 **Source:** [`source/requirements.md`](source/requirements.md) — "Project Intelligence Platform, Product
-Requirements & Technical Development Specification", status Draft (sign-off: T-001, OQ-001).
-**Version:** 1.1 (2026-11-20). 1.0 restructured the source with no requirement added or removed; 1.1
-adds FR-5.12 and FR-5.13 (D-006).
+Requirements & Technical Development Specification", status Draft; signed off against this spec on
+2026-11-24 (D-008). Requirement changes from then on go through D-numbers.
+**Version:** 1.2 (2026-11-24). 1.0 restructured the source with no requirement added or removed; 1.1
+adds FR-5.12 and FR-5.13 (D-006); 1.2 cites the sign-off gaps OQ-037–OQ-040 (D-008).
 
 Conventions:
 
@@ -31,8 +32,8 @@ deployment is accepted against §8 of this document (source §16).
 * Forcing one repository directory structure or migration of existing documentation.
 * LLM processing of every repository event.
 * Automatically determining business acceptance from code changes.
-* Future considerations of source §18 (Bitbucket beyond FR-4.10, Figma API, Google Workspace, Slack/Teams,
-  automated risk detection, resource planning, adapter marketplace, …).
+* Future considerations of source §18 other than the providers in FR-4.10 and FR-13.1 (OQ-040): Figma
+  API, Google Workspace, Slack/Teams, automated risk detection, resource planning, adapter marketplace, ….
 
 ---
 
@@ -91,11 +92,11 @@ Exact role names, organization roles and the permission matrix: OQ-007.
 
 **FR-2.8** QA result records hold project, task, requirement, test status, result, tester and test time. *(Source: §5.1 QA Result)*
 
-**FR-2.9** Approval records hold project, entity type, entity id, approval type, status, approver, approval time and comments. *(Source: §5.1 Approval)*
+**FR-2.9** Approval records hold project, entity type, entity id, approval type, status, approver, approval time and comments. Approval workflow: OQ-037. *(Source: §5.1 Approval, §15 Phase 4)*
 
 **FR-2.10** Repository integration records hold repository, adapter type, adapter version, configuration, synchronization mode and status. *(Source: §5.1 Repository Integration)*
 
-**FR-2.11** Entities the source uses but does not define get records too: milestones (OQ-008), task comments and dependencies (OQ-009), commits and branches (OQ-010), change requests (OQ-011), design references (OQ-012). *(Source: §7.1, §7.3, §8.2, §8.3, §5.2)*
+**FR-2.11** Entities the source uses but does not define get records too: milestones (OQ-008), task comments and dependencies (OQ-009), commits and branches (OQ-010), change requests (OQ-011), design references (OQ-012), releases (OQ-039). *(Source: §7.1, §7.3, §8.2, §8.3, §5.2, §3.1)*
 
 **FR-2.12** The model supports relationships between organizations–projects, projects–repositories, projects–requirements, requirements–tasks, tasks–pull requests, tasks–commits, tasks–QA results, requirements–approvals, documents–source repositories and technical decisions–implementation changes. *(Source: §5.2)*
 
@@ -167,7 +168,7 @@ Exact role names, organization roles and the permission matrix: OQ-007.
 
 **FR-4.9** The platform keeps separate states per capability: canonical project state, active branch state, merged state and released state. Release detection: OQ-018. *(Source: §6.4)*
 
-**FR-4.10** Additional Git providers (GitLab, then Bitbucket) are integrated behind the same adapter boundary. *(Source: §15 Phase 5, §18)*
+**FR-4.10** Additional Git providers (GitLab, then Bitbucket) are integrated behind the same adapter boundary. Release placement: OQ-040. *(Source: §15 Phase 5, §18)*
 
 ### FR-5 Tasks, requirements and change requests
 
@@ -219,7 +220,7 @@ Exact role names, organization roles and the permission matrix: OQ-007.
 
 **FR-7.2** Context categories: project overview, repository overview, architecture, coding conventions, active tasks, recent activity, technical decisions, requirements, known issues, deployment instructions. *(Source: §9.2)*
 
-**FR-7.3** Retrieval operations: project overview, repository context, project tasks by status, recent activity with limit, related requirements of a task, technical decisions by query. *(Source: §9.3)*
+**FR-7.3** Retrieval operations: project overview, repository context, project tasks by status, recent activity with limit, related requirements of a task (OQ-038), technical decisions by query. *(Source: §9.3)*
 
 **FR-7.4** Retrieval filters by organization, project, repository, task, requirement, document category, date range and the caller's permissions. *(Source: §9.3)*
 
@@ -327,7 +328,7 @@ Exact role names, organization roles and the permission matrix: OQ-007.
 
 ### FR-13 External task management
 
-**FR-13.1** External task management systems (Linear, Jira, GitHub / GitLab Issues) can be task sources through adapters. *(Source: §15 Phase 5, §2.1)*
+**FR-13.1** External task management systems (Linear, Jira, GitHub / GitLab Issues) can be task sources through adapters. Release placement: OQ-040. *(Source: §15 Phase 5, §2.1, §18)*
 
 ---
 
@@ -428,6 +429,8 @@ Each boundary has a versioned contract document; payload tables live there, not 
 
 * The source document is complete in scope; this spec restructures it without adding requirements. Gaps are OQs.
 * Interview answers of 2026-11-20 are recorded as D-001 to D-004.
+* Source §1.2 (core problems), §1.3 (objectives), §3.1 (architecture diagram) and §19 (definition of
+  success) are context: they carry no IDs, and their content is covered by the requirements above (D-008).
 * Open questions in state `assumed` are implemented with their proposed position until the owner says otherwise.
 
 ---

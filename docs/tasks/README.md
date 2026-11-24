@@ -11,7 +11,7 @@ Requirement → task coverage: [`../fsd/traceability.md`](../fsd/traceability.md
 
 | Task | Release | Size | Status | Satisfies |
 |---|---|---|---|---|
-| [T-001](backlog/T-001-sign-off-source-requirements.md) sign off source requirements | — | S | open | tooling |
+| [T-001](done/T-001-sign-off-source-requirements.md) sign off source requirements | — | S | done 2026-11-24 — D-008 | tooling |
 | [T-002](done/T-002-create-github-remote.md) create github remote | — | S | done 2026-11-21 | tooling |
 | [T-003](backlog/T-003-test-github-app-and-sample-payloads.md) test github app and sample payloads | R2 | S | ready | tooling |
 | [T-004](backlog/T-004-confirm-nfr-targets-and-retention.md) confirm nfr targets and retention | — | S | open | NFR-13, NFR-14 |
