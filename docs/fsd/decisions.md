@@ -11,6 +11,8 @@ commits. Long-form architecture decisions go to `adr/ADR-nnn-<slug>.md`.
 | D-004 | Internal product, no external client | — | binding |
 | D-005 | Remote: public GitHub repository `ramadhan-zain/project-intelligence-platform`, default branch `main` | OQ-027 | binding |
 | D-006 | Task views: Kanban view on the task board and a Gantt view of the project schedule | OQ-035 | binding |
+| D-007 | Database migrations are forward-only; rollback = restore the pre-deploy backup | OQ-036 | binding |
+| D-008 | Source requirements signed off against `PIP-dev-spec.md` v1.2; later requirement changes go through D-numbers | OQ-001 | binding |
 
 ## D-001 — Deployables and stack
 
@@ -75,3 +77,15 @@ commits. Long-form architecture decisions go to `adr/ADR-nnn-<slug>.md`.
   runs on the new schema.
 * **Agreed by:** tech lead (T-020 session).
 * **Date:** 2026-11-21.
+
+## D-008 — Source requirements signed off
+
+* **Question:** OQ-001. The source document's status is Draft; is `PIP-dev-spec.md` a complete and
+  faithful restructuring of it?
+* **Answer:** Signed off. Every source section with requirements has IDs in the dev spec (§16 maps
+  one-to-one to AC-1–AC-30). Gaps found in the review are recorded as OQ-037 (client approval workflow),
+  OQ-038 (`get_related_requirements` MCP tool), OQ-039 (release entity) and OQ-040 (§15 vs §18 on extra
+  providers); §1.2, §1.3, §3.1 and §19 are context and carry no IDs. From now on a requirement is added,
+  changed or removed only through a D-number, and the dev spec version is bumped.
+* **Agreed by:** product owner (T-001 session).
+* **Date:** 2026-11-24.

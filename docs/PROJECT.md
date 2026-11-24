@@ -4,6 +4,9 @@ Stable context for everyone working on this repository. Requirements live in
 [`PIP-dev-spec.md`](PIP-dev-spec.md); the original product specification is kept untouched in
 [`source/requirements.md`](source/requirements.md).
 
+**Source status:** signed off by the product owner on 2026-11-24 against `PIP-dev-spec.md` v1.2 (D-008).
+Requirement changes from then on go through D-numbers.
+
 ## What it does
 
 A multi-tenant, event-driven platform that keeps one continuously updated source of project knowledge.
