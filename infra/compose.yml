@@ -3,7 +3,7 @@
 name: pip-dev
 
 x-app-env: &app-env
-  DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+  DATABASE_URL: postgres://pip_app:${APP_DB_PASSWORD}@postgres:5432/${POSTGRES_DB}
   REDIS_URL: redis://redis:6379
   RELEASE_VERSION: ${PIP_VERSION:-0.0.0-dev}
 

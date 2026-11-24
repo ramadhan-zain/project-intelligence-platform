@@ -64,3 +64,14 @@ commits. Long-form architecture decisions go to `adr/ADR-nnn-<slug>.md`.
 * **Agreed by:** product owner (session after bootstrap; reference was a task-progress dashboard
   of another project, see T-077 notes).
 * **Date:** 2026-11-20.
+
+## D-007 — Database migrations are forward-only
+
+* **Question:** OQ-036. drizzle-kit (OQ-005) generates no down migrations; RELEASE.md asks each migration
+  to be reversible or listed as "restore from backup to roll back".
+* **Answer:** Migrations are forward-only. Rolling back a release that carries migrations means restoring
+  the pre-deploy backup (RELEASE.md §3); every such release says so under **Deployment**. Destructive
+  schema changes are split expand → migrate → contract across releases, so the previous release still
+  runs on the new schema.
+* **Agreed by:** tech lead (T-020 session).
+* **Date:** 2026-11-21.

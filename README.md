@@ -27,7 +27,8 @@ Needs Node 22, pnpm 10 (`corepack enable`), Docker, Python 3 (for `tools/trace.p
 
 ```sh
 make install          # dependencies from the lockfile
-make dev-up           # full stack at http://localhost:8088 (writes infra/.env with random secrets)
+make dev              # PostgreSQL + Redis in Docker, migrations, apps on the host (web :3000, api :3001)
+make dev-up           # alternative: full stack in Docker at http://localhost:8088
 make test             # unit + contract tests, coverage gate
 make test-integration # integration tests against throwaway PostgreSQL / Redis
 make lint             # biome, dependency rules, type check

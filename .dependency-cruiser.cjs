@@ -16,6 +16,13 @@ module.exports = {
       to: { path: "^(packages/db|apps/)|node_modules/(postgres|ioredis|bullmq|fastify)" },
     },
     {
+      name: "db-postgres-only",
+      comment: "PostgreSQL is the only store of record; packages/db never touches Redis (NFR-2).",
+      severity: "error",
+      from: { path: "^packages/db" },
+      to: { path: "node_modules/(ioredis|redis|bullmq)" },
+    },
+    {
       name: "no-circular",
       severity: "error",
       from: {},

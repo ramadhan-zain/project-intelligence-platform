@@ -6,7 +6,7 @@ PROD := docker compose -f infra/prod/stack.yml
 
 .DEFAULT_GOAL := help
 .PHONY: help install dev-env dev-up dev-deps down clean logs build lint format typecheck test test-up \
-	      test-down test-integration schemas trace images db-schema mock-github-ping
+	      test-down test-integration schemas trace images db-migrate db-schema mock-github-ping dev
 
 help: ## List targets
 	@awk 'BEGIN {FS = ":.*## "} /^[a-zA-Z0-9_-]+:.*## / {printf "  \033[36m%-18s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -17,11 +17,20 @@ install: ## Install dependencies from the lockfile
 dev-env: ## Write infra/.env with random secrets (never overwrites)
 	./infra/dev-env.sh
 
-dev-up: dev-env ## Build and start the full dev stack (http://localhost:8088)
+ENV := set -a; . infra/.env; set +a;
+
+dev: dev-deps ## Local dev: PostgreSQL + Redis in Docker, apps on the host with watch (web :3000, api :3001)
+	$(ENV) pnpm dev
+
+dev-up: dev-deps ## Build and start the full stack in Docker (http://localhost:8088)
 	$(DEV) up -d --build --wait
 
-dev-deps: dev-env ## Start only PostgreSQL and Redis (apps run on the host with `pnpm dev`)
+dev-deps: dev-env ## Start only PostgreSQL and Redis, then apply migrations
 	$(DEV) up -d --wait postgres redis
+	$(MAKE) db-migrate
+
+db-migrate: ## Create/update the app role and apply migrations as the owner (forward-only, OQ-036)
+	$(ENV) pnpm db:migrate
 
 down: ## Stop the dev stack (keeps volumes)
 	$(DEV) down
@@ -70,8 +79,8 @@ images: ## Build all service images tagged with the root version
 	  docker build -f apps/$$s/Dockerfile --build-arg RELEASE_VERSION=$$v -t pip-$$s:$$v . || exit 1; \
 	done
 
-db-schema: ## Regenerate docs/db-schema.md from migrations (implemented with T-020)
-	@echo "db-schema: no migrations yet (T-020)"
+db-schema: ## Regenerate docs/db-schema.md from migrations (implemented with T-021)
+	@echo "db-schema: no tables yet (T-021)"
 
 mock-github-ping: ## Send the GitHub `ping` fixture to the dev stack (needs GITHUB_WEBHOOK_SECRET)
-	set -a; . infra/.env; set +a; node --import tsx tools/github_mock/src/send.ts ping ping
+	$(ENV) node --import tsx tools/github_mock/src/send.ts ping ping
