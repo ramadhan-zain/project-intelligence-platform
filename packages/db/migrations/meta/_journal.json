@@ -8,6 +8,13 @@
       "when": 1795244231069,
       "tag": "0000_tenant_context",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1795517203654,
+      "tag": "0001_tenancy",
+      "breakpoints": true
     }
   ]
 }

@@ -1,6 +1,6 @@
 # T-027 — Secrets encryption and token hashing
 
-**Phase:** 3 — Persistence · **Release:** R1 · **Status:** blocked (by T-020) · **Size:** M
+**Phase:** 3 — Persistence · **Release:** R1 · **Status:** ready · **Size:** M
 **Satisfies:** NFR-7, NFR-8, AC-29 · **Depends on:** T-020 · **Gated by:** —
 **Files:** `packages/db/src/crypto.ts`
 

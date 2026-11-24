@@ -79,8 +79,8 @@ images: ## Build all service images tagged with the root version
 	  docker build -f apps/$$s/Dockerfile --build-arg RELEASE_VERSION=$$v -t pip-$$s:$$v . || exit 1; \
 	done
 
-db-schema: ## Regenerate docs/db-schema.md from migrations (implemented with T-021)
-	@echo "db-schema: no tables yet (T-021)"
+db-schema: ## Regenerate docs/db-schema.md from the latest migration snapshot
+	pnpm db:schema
 
 mock-github-ping: ## Send the GitHub `ping` fixture to the dev stack (needs GITHUB_WEBHOOK_SECRET)
 	$(ENV) node --import tsx tools/github_mock/src/send.ts ping ping

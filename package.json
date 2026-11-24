@@ -16,7 +16,9 @@
     "test:integration": "vitest run --config vitest.integration.config.ts",
     "schemas": "node --conditions=source --import tsx packages/contracts/scripts/export-schemas.ts",
     "dev": "pnpm -r --parallel --filter './apps/*' run dev",
-    "db:migrate": "node --conditions=source --import tsx packages/db/scripts/migrate.ts"
+    "db:migrate": "node --conditions=source --import tsx packages/db/scripts/migrate.ts",
+    "db:generate": "NODE_OPTIONS=--conditions=source pnpm --filter @pip/db exec drizzle-kit generate && biome format --write packages/db/migrations/meta",
+    "db:schema": "node --import tsx packages/db/scripts/db-schema.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.8",

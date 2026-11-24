@@ -1,6 +1,6 @@
 # T-024 — Schema events sync audit
 
-**Phase:** 3 — Persistence · **Release:** R1 · **Status:** blocked (by T-021) · **Size:** M
+**Phase:** 3 — Persistence · **Release:** R1 · **Status:** ready · **Size:** M
 **Satisfies:** FR-2.6, FR-9.7, FR-9.9, FR-10.5 · **Depends on:** T-021 · **Gated by:** —
 **Files:** `packages/db/src/schema/events.ts`
 

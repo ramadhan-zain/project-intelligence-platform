@@ -31,7 +31,8 @@ export const DocumentCategory = z.enum(DOCUMENT_CATEGORIES);
 export type DocumentCategory = z.infer<typeof DocumentCategory>;
 
 /** Integration modes (FR-3.6–FR-3.8). Hybrid is the default. */
-export const IntegrationMode = z.enum(["push", "pull", "hybrid"]).default("hybrid");
+export const INTEGRATION_MODES = ["push", "pull", "hybrid"] as const;
+export const IntegrationMode = z.enum(INTEGRATION_MODES).default("hybrid");
 export type IntegrationMode = z.infer<typeof IntegrationMode>;
 
 /** Maps any category string to a known one; unknown values become `custom` (FR-3.12). */

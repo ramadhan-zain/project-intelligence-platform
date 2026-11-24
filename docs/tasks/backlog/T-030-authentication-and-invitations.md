@@ -1,6 +1,6 @@
 # T-030 — Authentication and invitations
 
-**Phase:** 4 — Services / API · **Release:** R1 · **Status:** blocked (by T-021) · **Size:** M
+**Phase:** 4 — Services / API · **Release:** R1 · **Status:** ready · **Size:** M
 **Satisfies:** FR-1.2 · **Depends on:** T-021 · **Gated by:** —
 **Files:** `apps/api/src/auth/`
 
